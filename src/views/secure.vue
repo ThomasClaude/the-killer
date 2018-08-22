@@ -1,5 +1,5 @@
 <template>
-  <div id="secure">
+  <div class="secure" id="secure">
     <h1>
       Secure Area
     </h1>
@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-  #secure {
+  .secure {
     background-color: #fff;
     border: 1px solid #222;
     padding: 20px;
