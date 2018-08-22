@@ -1,18 +1,50 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div class="app" id="app">
+    <div class="nav" id="nav">
+      <router-link v-if="authenticated"
+                   to="/login"
+                   v-on:click.native="logout()"
+                   replace
+      >
+        Logout
+      </router-link>
+    </div>
+    <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      authenticated: false,
+      mockAccount: {
+        username: 'admin',
+        password: 'root'
+      }
+    }
+  },
+  mounted () {
+    if (!this.authenticated) {
+      this.$router.replace({
+        name: 'login'
+      })
+    }
+  },
+  methods: {
+    setAuthenticated (status) {
+      this.authenticated = status
+    },
+    logout () {
+      this.authenticated = false
+    }
+  }
 }
 </script>
 
 <style>
-#app {
+.app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

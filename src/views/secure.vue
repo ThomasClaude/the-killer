@@ -10,19 +10,21 @@
 </template>
 
 <script>
-  export default {
-    name: 'Secure',
-    data() {
-      return {};
-    }
+export default {
+  name: 'Secure',
+  data () {
+    return {}
   }
+}
 </script>
 
 <style scoped>
   .secure {
-    background-color: #fff;
-    border: 1px solid #222;
+    width: 50%;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    margin: auto;
+    margin-top: 100px;
     padding: 20px;
-    margin-top: 10px;
   }
 </style>
