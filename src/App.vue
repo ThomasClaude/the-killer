@@ -2,7 +2,7 @@
   <div class="app" id="app">
     <div class="nav" id="nav">
       <router-link v-if="authenticated"
-                   to="/login"
+                   to="/signin"
                    v-on:click.native="logout()"
                    replace
       >
@@ -28,7 +28,7 @@ export default {
   mounted () {
     if (!this.authenticated) {
       this.$router.replace({
-        name: 'login'
+        name: 'signin'
       })
     }
   },

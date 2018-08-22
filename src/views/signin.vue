@@ -1,5 +1,5 @@
 <template>
-  <div class="login" id="login">
+  <div class="signin" id="signin">
     <h1>
       Your IP is {{ ip }}
     </h1>
@@ -29,7 +29,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'login',
+  name: 'signin',
   data () {
     return {
       ip: '',
@@ -55,7 +55,7 @@ export default {
         console.error(error)
       })
     }
-    // login () {
+    // signin () {
     //   // Calling v-model in the condition
     //   if (this.input.username !== '' && this.input.password !== '') {
     //     // Need to check what is mockAccount
@@ -77,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-  .login {
+  .signin {
     width: 50%;
     border: 1px solid #cccccc;
     background-color: #ffffff;
