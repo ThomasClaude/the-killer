@@ -1,44 +1,37 @@
 <template>
   <div class="app" id="app">
-    <div class="nav" id="nav">
-      <router-link v-if="authenticated"
-                   to="/signin"
-                   v-on:click.native="logout()"
-                   replace
-      >
-        Logout
-      </router-link>
+    <div class="columns medium-4" v-for="(result, index) in results">
+    <div class="card">
+      <div class="card-section">
+        <p> {{ index }} </p>
+      </div>
+      <div class="card-divider">
+        <p>$ {{ result.USD }}</p>
+      </div>
+      <div class="card-section">
+        <p> &#8364 {{ result.EUR }}</p>
+      </div>
     </div>
-    <router-view @authenticated="setAuthenticated" />
+  </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+const url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR";
+
+
 export default {
   name: 'App',
   data () {
     return {
-      authenticated: false,
-      mockAccount: {
-        username: 'admin',
-        password: 'root'
-      }
+      results: []
     }
   },
-  mounted () {
-    if (!this.authenticated) {
-      this.$router.replace({
-        name: 'signin'
-      })
-    }
-  },
-  methods: {
-    setAuthenticated (status) {
-      this.authenticated = status
-    },
-    logout () {
-      this.authenticated = false
-    }
+  mounted() {
+    axios.get(url).then(response => {
+      this.results = response.data
+    })
   }
 }
 </script>
